@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ntl_recognition</name>
+  <version>0.1.0</version>
+  <description>The ntl_recognition package</description>
+
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+
+  <license>BSD</license>
+
+  <url type="repository">http://github.com/ntl-ros-pkg/ntl_recognition</url>
+
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>motoman_point_cloud</exec_depend>
+  
+  <export>
+    <metapackage/>
+  </export>
+
+</package>
