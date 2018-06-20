@@ -58,7 +58,7 @@ foreach(nodes ${EXEC_FILES})
     RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
     )
 endforeach(nodes)
-nstall(DIRECTORY include/
+install(DIRECTORY include/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   )
 
@@ -72,7 +72,7 @@ foreach(scripts ${PYTHON_SCRIPTS})
 endforeach(scripts)
 
 # Install all files
-foreach(dir launch launch/rviz config)
+foreach(dir launch launch/rviz)
   install(DIRECTORY ${dir}/
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)
