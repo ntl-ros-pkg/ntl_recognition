@@ -16,7 +16,7 @@ env:
   global:		
     - CATKIN_PARALLEL_TEST_JOBS=-p1		
     - ROS_PARALLEL_TEST_JOBS=-j`nproc`		
-    - UPSTREAM_WORKSPACE=file
+    # - UPSTREAM_WORKSPACE=file
     # - ROSINSTALL_FILENAME=.kinetic_depends.rosinstall
     
   matrix:		
