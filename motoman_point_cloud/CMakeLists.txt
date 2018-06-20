@@ -21,6 +21,10 @@ catkin_package(
   CATKIN_DEPENDS roscpp sensor_msgs std_msgs pcl_ros pcl_msgs tf tf_conversions
   )
 
+
+#########
+# Build #
+#########
 include_directories(SYSTEM ${Boost_INCLUDE_DIR} ${EIGEN_INCLUDE_DIRS})
 include_directories(
   include
@@ -41,3 +45,42 @@ target_link_libraries(kinect_downsampler_node
 
 add_executable(point_cloud_merger src/point_cloud_merger.cpp)
 target_link_libraries(point_cloud_merger ${catkin_LIBRARIES})
+
+###########
+# Install #
+###########
+set(EXEC_FILES
+  kinect_downsampler_node
+  point_cloud_merger
+  )
+foreach(nodes ${EXEC_FILES})
+  install(TARGETS ${nodes}
+    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+    )
+endforeach(nodes)
+nstall(DIRECTORY include/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  )
+
+# Python scripts
+set(PYTHON_SCRPTS
+  scripts/tf_interactive_maker.py
+)
+foreach(scripts ${PYTHON_SCRIPTS})
+  catkin_install_python(PROGRAMS ${scripts}
+    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+endforeach(scripts)
+
+# Install all files
+foreach(dir launch launch/rviz config)
+  install(DIRECTORY ${dir}/
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach(dir)
+
+#############
+## Testing ##
+#############
+if (CATKIN_ENABLE_TESTING)
+  find_package(roslaunch REQUIRED)
+  roslaunch_add_file_check(launch)
+endif()
