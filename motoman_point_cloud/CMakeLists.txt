@@ -64,7 +64,7 @@ install(DIRECTORY include/
 
 # Python scripts
 set(PYTHON_SCRIPTS
-  scripts/tf_interactive_maker.py
+  scripts/tf_interactive_marker.py
 )
 foreach(scripts ${PYTHON_SCRIPTS})
   catkin_install_python(PROGRAMS ${scripts}
